@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>탑다운(Top-down) 공법 안전보건작업 지침 | CIP Master</title>
+<meta name="description" content="탑다운(Top-down) 공법 안전보건작업 지침. 위험요인 검색/필터, 저장형 점검 체크리스트, TBM 10초 자동 생성(혼합 분기) 포함."/>
+<meta name="theme-color" content="#2563eb"/>
+
+<link rel="stylesheet" as="style" crossorigin
+href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"/>
+
+<style>
+:root{
+  --blue:#2563eb; --blue2:#60a5fa; --ink:#0b1220; --muted:#5a6477;
+  --bg:#f5f8ff; --card:#fff; --line:rgba(37,99,235,.18);
+  --shadow:0 18px 60px rgba(37,99,235,.14); --r:18px; --r2:26px;
+  --danger:#ef4444; --warn:#f59e0b; --ok:#22c55e;
+}
+[data-theme="dark"]{
+  --ink:#e9f1ff; --muted:#b7c6dd; --bg:#0c1423; --card:#101c33;
+  --line:rgba(96,165,250,.26); --shadow:0 18px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:Pretendard,system-ui,sans-serif; color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 15% 0%, rgba(37,99,235,.18), transparent 55%),
+    radial-gradient(900px 520px at 85% 0%, rgba(96,165,250,.18), transparent 50%),
+    var(--bg);
+  line-height:1.72;
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(1200px, calc(100% - 40px)); margin:0 auto}
+
+/* Topbar */
+.topbar{position:sticky; top:0; z-index:50; backdrop-filter: blur(14px);
+  background:linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.64));
+  border-bottom:1px solid var(--line);}
+[data-theme="dark"] .topbar{
+  background:linear-gradient(180deg, rgba(16,28,51,.88), rgba(16,28,51,.66));
+}
+.topbar-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+.brand{display:flex; align-items:center; gap:12px; font-weight:950}
+.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--blue2)); box-shadow:0 14px 40px rgba(37,99,235,.35)}
+.brand small{display:block; font-size:12px; color:var(--muted); font-weight:800}
+.nav{display:flex; gap:14px; font-size:13px; font-weight:900; color:var(--muted)}
+.nav a{padding:8px 10px; border-radius:999px}
+.nav a:hover{background:rgba(37,99,235,.10); color:var(--ink)}
+.actions{display:flex; gap:10px}
+.btn{
+  border:1px solid var(--line); background:rgba(255,255,255,.70);
+  border-radius:999px; padding:10px 12px; font-weight:950; cursor:pointer
+}
+[data-theme="dark"] .btn{background:rgba(16,28,51,.70)}
+.btn.primary{background:linear-gradient(135deg,var(--blue),var(--blue2)); color:#fff; border:none; box-shadow:0 18px 45px rgba(37,99,235,.35)}
+.btn.danger{background:linear-gradient(135deg, #ef4444, #fb7185); color:#fff; border:none}
+@media(max-width:980px){.nav{display:none}}
+
+/* Hero */
+.hero{padding:42px 0 20px}
+.hero-grid{display:grid; grid-template-columns:1.12fr .88fr; gap:22px}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}}
+.hero-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.76));
+  border:1px solid var(--line); border-radius:var(--r2); padding:26px; box-shadow:var(--shadow)
+}
+[data-theme="dark"] .hero-card{background:linear-gradient(180deg, rgba(16,28,51,.92), rgba(16,28,51,.70))}
+.badge{display:inline-flex; gap:8px; align-items:center; padding:7px 12px; border-radius:999px;
+  background:rgba(37,99,235,.14); border:1px solid var(--line); font-weight:950; font-size:12px}
+.dot{width:8px;height:8px;border-radius:99px;background:linear-gradient(135deg,var(--blue),var(--blue2))}
+h1{margin:14px 0 10px; font-size:36px; letter-spacing:-.03em}
+.lead{color:var(--muted); font-weight:850}
+.hero-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px}
+.kpi{background:rgba(37,99,235,.12); border:1px solid var(--line); border-radius:16px; padding:12px}
+.kpi b{font-size:12px; color:var(--muted)} .kpi strong{display:block; font-size:18px; margin-top:4px}
+
+/* Sections */
+section{padding:26px 0}
+.section-title{display:flex; justify-content:space-between; align-items:flex-end; gap:14px; margin-bottom:14px}
+.section-title h2{margin:0; font-size:22px}
+.hint{color:var(--muted); font-weight:850; font-size:13px}
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card); border:1px solid var(--line); border-radius:var(--r);
+  padding:18px; box-shadow:0 12px 30px rgba(37,99,235,.14)}
+.card h3{margin:0 0 8px; font-size:16px}
+.card p{margin:0; color:var(--muted); font-weight:850}
+.list{padding-left:18px; color:var(--muted); font-weight:850}
+.hr{height:1px; background:rgba(37,99,235,.18); margin:14px 0}
+
+/* Callouts */
+.callout{
+  border-radius:18px; padding:14px 16px; border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(37,99,235,.10), rgba(37,99,235,.06));
+}
+.callout.danger{
+  border-color:rgba(239,68,68,.35);
+  background:linear-gradient(180deg, rgba(239,68,68,.16), rgba(239,68,68,.06));
+}
+.callout .title{font-weight:950; display:flex; gap:10px; align-items:center}
+.callout .desc{color:var(--muted); font-weight:850; margin-top:6px}
+
+/* Toolbar & inputs */
+.toolbar{display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center}
+.inputs{display:flex; gap:10px; flex-wrap:wrap; width:100%}
+.input, select, textarea{
+  border:1px solid var(--line); border-radius:12px; padding:10px 12px;
+  font-weight:900; background:rgba(255,255,255,.72); color:var(--ink); outline:none}
+[data-theme="dark"] .input,[data-theme="dark"] select,[data-theme="dark"] textarea{background:rgba(16,28,51,.72)}
+textarea{width:100%; font-weight:850}
+.input{flex:1; min-width:220px}
+select{min-width:180px}
+.mini-actions{display:flex; gap:10px; flex-wrap:wrap}
+
+/* Risk table */
+.table-wrap{overflow:auto; border:1px solid var(--line); border-radius:16px; background:var(--card)}
+table{border-collapse:separate; border-spacing:0; min-width:1180px; width:100%}
+thead th{position:sticky; top:0; background:rgba(37,99,235,.18); padding:12px; font-weight:950; text-align:left}
+tbody td{padding:12px; border-bottom:1px solid rgba(37,99,235,.18); color:var(--muted); font-weight:850; vertical-align:top}
+.tag{display:inline-flex; padding:6px 10px; border-radius:999px; border:1px solid var(--line);
+  background:rgba(37,99,235,.12); font-weight:950; font-size:12px; color:var(--ink)}
+.tag.red{background:rgba(239,68,68,.14); border-color:rgba(239,68,68,.32)}
+.tag.ylw{background:rgba(245,158,11,.16); border-color:rgba(245,158,11,.34)}
+.tag.grn{background:rgba(34,197,94,.14); border-color:rgba(34,197,94,.32)}
+
+/* SOP */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+@media(max-width:980px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:18px; box-shadow:0 12px 30px rgba(37,99,235,.14)}
+.no{width:34px;height:34px;border-radius:12px; display:grid;place-items:center; background:linear-gradient(135deg,var(--blue),var(--blue2)); color:#fff; font-weight:950; margin-bottom:10px}
+.step h4{margin:0 0 8px; font-size:15px}
+.step ul{margin:0; padding-left:18px; color:var(--muted); font-weight:850}
+
+/* Checklist */
+.checklist{background:var(--card); border:1px solid var(--line); border-radius:var(--r2); padding:18px; box-shadow:var(--shadow)}
+.progress{height:10px; background:rgba(37,99,235,.20); border-radius:999px; overflow:hidden}
+.bar{height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--blue2))}
+.cl-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:14px}
+@media(max-width:980px){.cl-grid{grid-template-columns:1fr}}
+.cl-item{display:flex; gap:10px; align-items:flex-start; padding:12px; border-radius:16px;
+  background:rgba(37,99,235,.10); border:1px solid rgba(37,99,235,.16)}
+.cl-item input{margin-top:4px; accent-color:var(--blue)}
+.cl-item b{display:block} .cl-item span{display:block; color:var(--muted); font-weight:850; font-size:13px}
+.group-title{margin:14px 0 6px; font-weight:950; color:var(--ink)}
+
+/* Print */
+@media print{
+  .topbar,.nav,.actions,.toolbar,.mini-actions{display:none!important}
+  body{background:#fff}
+  .card,.hero-card,.checklist,.step{box-shadow:none!important}
+  .table-wrap{border:1px solid #ddd}
+}
+</style>
+</head>
+
+<body>
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          탑다운(Top-down) 공법 안전보건작업 지침
+          <small>구조 미완성 상태 반복 시공 | 붕괴·낙하·가스 위험 통제 | 개요 · 위험요인 · SOP · 점검 · TBM</small>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#overview">개요</a>
+        <a href="#risks">위험요인</a>
+        <a href="#sop">SOP</a>
+        <a href="#check">점검</a>
+        <a href="#tbm">TBM</a>
+      </nav>
+      <div class="actions">
+        <button class="btn" id="themeBtn" title="다크모드">🌙</button>
+        <button class="btn" onclick="window.print()" title="인쇄/PDF">🖨️</button>
+        <a class="btn primary" href="#tbm" title="TBM로 이동">🎙️ TBM</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-card">
+        <span class="badge"><span class="dot"></span> CIP Master Level</span>
+        <h1>탑다운 재해는<br/>“구조 미완성 하중경로·개구부·지하작업환경”에서 터집니다.</h1>
+        <p class="lead">
+          탑다운은 <b>완성 구조물이 아닌 ‘임시 구조 상태’</b>에서 굴착과 시공이 반복됩니다.
+          따라서 <b>하중경로(슬래브-기둥-벽체) 확인</b>, <b>개구부 방호</b>,
+          <b>계측 기반 진행</b>, <b>지하 환기/가스</b>가 핵심입니다.
+        </p>
+        <div class="hero-kpis">
+          <div class="kpi"><b>핵심 재해</b><strong>붕괴/좌굴</strong></div>
+          <div class="kpi"><b>핵심 재해</b><strong>낙하/추락</strong></div>
+          <div class="kpi"><b>핵심 재해</b><strong>질식/유해가스</strong></div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3 style="margin-top:0;">🛑 즉시중지(Stop Work) 기준</h3>
+        <div class="callout danger">
+          <div class="title">🚨 “한 가지라도” 발생하면 즉시 중지</div>
+          <div class="desc">
+            ① 벽체/기둥/슬래브 <b>균열·좌굴·변형</b> 또는 접합부 이상<br/>
+            ② 계측값 <b>급변</b> 또는 기준치 초과(변위/하중/수위 등)<br/>
+            ③ 굴착면 붕괴, 토사 유실, 지반침하/균열 징후<br/>
+            ④ 개구부/램프 구간 방호 불완전(난간·덮개·낙하물 위험)<br/>
+            ⑤ 지하공간 산소결핍/유해가스 경보, 환기 불량<br/>
+            ⑥ 양중 중 과하중·비래·낙하 위험(와이어/훅/체결 이상)<br/>
+            → <b>작업중지 → 접근통제 → 원인 확인 → 조치/승인 후 재개</b>
+          </div>
+        </div>
+        <div class="hr"></div>
+        <h3 style="margin:0 0 10px;">🎯 즉시 통제 포인트</h3>
+        <ul class="list">
+          <li><b>하중경로</b>: 슬래브 타설/양생 전 굴착 진행 금지</li>
+          <li><b>개구부</b>: 덮개·난간·낙하방지망 없으면 작업 금지</li>
+          <li><b>계측</b>: 이상이면 “다음 단계 없음”</li>
+          <li><b>지하작업</b>: 환기/가스측정 없으면 투입 금지</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- 개요 -->
+<section id="overview">
+  <div class="container">
+    <div class="section-title">
+      <h2>개요</h2>
+      <div class="hint">적용 · 공정 흐름 · 위험의 본질</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>공법 개념</h3>
+        <p>외벽/기둥 등 구조체를 선시공하고 상부 슬래브를 지보로 활용하여 <b>위→아래</b>로 굴착·시공을 반복하는 공법.</p>
+      </div>
+      <div class="card">
+        <h3>핵심 위험</h3>
+        <p><b>미완성 구조 상태</b>에서 굴착/양중/가설하중이 발생 → 하중경로 관리 실패 시 붕괴·좌굴로 직결.</p>
+      </div>
+      <div class="card">
+        <h3>현장 운영 원칙</h3>
+        <p><b>계측 이상이면 공정 정지</b>. 개구부 방호/환기/양중 통제 없으면 작업 금지.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>현장 기본 세트(필수)</h3>
+      <ul class="list">
+        <li>단계별 공정계획(굴착 순서, 슬래브 타설/양생, 개구부 계획, 양중 계획)</li>
+        <li>구조 안전(하중경로 확인, 임시 지보/보강, 가설하중 집중 금지)</li>
+        <li>계측계획(변위·하중·수위 등) + 기준/경보/조치치 + 의사결정 체계</li>
+        <li>지하 작업환경(환기, 조명, 산소/유해가스 측정, 비상대피)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 위험요인 -->
+<section id="risks">
+  <div class="container">
+    <div class="section-title">
+      <h2>중점 위험요인</h2>
+      <div class="hint">검색 · 필터 · 핵심문구 복사</div>
+    </div>
+
+    <div class="toolbar">
+      <div class="inputs">
+        <input class="input" id="q" placeholder="검색(예: 붕괴, 좌굴, 개구부, 낙하, 양중, 가스, 환기, 계측, 수위, 침하)">
+        <select id="fStep">
+          <option value="">공정 전체</option>
+          <option value="사전/계획">사전/계획</option>
+          <option value="외벽·기둥 선시공">외벽·기둥 선시공</option>
+          <option value="슬래브/보 시공">슬래브/보 시공</option>
+          <option value="단계 굴착">단계 굴착</option>
+          <option value="양중/반입">양중/반입</option>
+          <option value="개구부/램프">개구부/램프</option>
+          <option value="지하 작업환경">지하 작업환경</option>
+          <option value="계측/유지관리">계측/유지관리</option>
+        </select>
+        <select id="fType">
+          <option value="">재해유형 전체</option>
+          <option value="붕괴/좌굴">붕괴/좌굴</option>
+          <option value="낙하/추락">낙하/추락</option>
+          <option value="끼임/협착">끼임/협착</option>
+          <option value="전도/충돌">전도/충돌</option>
+          <option value="질식/유해가스">질식/유해가스</option>
+          <option value="품질/구조불량">품질/구조불량</option>
+        </select>
+        <select id="fWork">
+          <option value="">작업상황 전체</option>
+          <option value="일반">일반</option>
+          <option value="근접구조물">근접구조물</option>
+          <option value="협소/동시작업">협소/동시작업</option>
+          <option value="야간/우천">야간/우천</option>
+          <option value="지하밀폐">지하밀폐</option>
+        </select>
+      </div>
+
+      <div class="mini-actions">
+        <button class="btn" id="resetRisk">초기화</button>
+        <button class="btn danger" id="copyRiskTop">핵심 6줄 복사</button>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:12px;">
+      <table id="riskTable">
+        <thead>
+          <tr>
+            <th style="width:140px;">재해유형</th>
+            <th style="width:170px;">공정</th>
+            <th style="width:160px;">작업상황</th>
+            <th>위험요인(상황)</th>
+            <th>통제대책(핵심)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 사전/계획 -->
+          <tr data-step="사전/계획" data-type="품질/구조불량" data-work="일반">
+            <td><span class="tag ylw">품질/구조불량</span></td>
+            <td>사전/계획</td><td>일반</td>
+            <td>단계별 굴착·슬래브 타설·양생·양중 계획 미정</td>
+            <td>단계 공정계획(굴착 순서/개구부/양중) 확정, 변경 시 승인 후 진행</td>
+          </tr>
+          <tr data-step="사전/계획" data-type="붕괴/좌굴" data-work="근접구조물">
+            <td><span class="tag red">붕괴/좌굴</span></td>
+            <td>사전/계획</td><td>근접구조물</td>
+            <td>근접 구조물/도로 영향권 미검토</td>
+            <td>영향권 조사·계측 강화(기준/경보/조치치), 이상 시 공정 정지 체계 운영</td>
+          </tr>
+
+          <!-- 외벽·기둥 선시공 -->
+          <tr data-step="외벽·기둥 선시공" data-type="품질/구조불량" data-work="일반">
+            <td><span class="tag red">품질/구조불량</span></td>
+            <td>외벽·기둥 선시공</td><td>일반</td>
+            <td>기둥(말뚝/기둥) 수직도·정착 불량, 접합부 품질 미확인</td>
+            <td>수직도/정착/철근·용접·콘크리트 품질 확인, 불량 시 보강/재시공 후 진행</td>
+          </tr>
+          <tr data-step="외벽·기둥 선시공" data-type="전도/충돌" data-work="협소/동시작업">
+            <td><span class="tag ylw">전도/충돌</span></td>
+            <td>외벽·기둥 선시공</td><td>협소/동시작업</td>
+            <td>장비 회전반경 내 작업자 혼재로 충돌</td>
+            <td>통제구역 운영(바리케이드/신호수), 동시작업 분리, 유도자 배치</td>
+          </tr>
+
+          <!-- 슬래브/보 시공 -->
+          <tr data-step="슬래브/보 시공" data-type="낙하/추락" data-work="일반">
+            <td><span class="tag red">낙하/추락</span></td>
+            <td>슬래브/보 시공</td><td>일반</td>
+            <td>거푸집/동바리 불안정, 개구부 추락 위험</td>
+            <td>동바리·거푸집 구조검토/설치상태 확인, 개구부 덮개·난간·낙하방지망 설치</td>
+          </tr>
+          <tr data-step="슬래브/보 시공" data-type="붕괴/좌굴" data-work="일반">
+            <td><span class="tag red">붕괴/좌굴</span></td>
+            <td>슬래브/보 시공</td><td>일반</td>
+            <td>양생 전 조기 하중(자재 적치/장비 주행)으로 붕괴</td>
+            <td>양생 기준 준수, 가설하중 집중 금지, 적치구역 지정·하중 분산</td>
+          </tr>
+
+          <!-- 단계 굴착 -->
+          <tr data-step="단계 굴착" data-type="붕괴/좌굴" data-work="일반">
+            <td><span class="tag red">붕괴/좌굴</span></td>
+            <td>단계 굴착</td><td>일반</td>
+            <td>슬래브(지보) 미완성 상태에서 과굴착/선굴착 → 하중경로 상실</td>
+            <td>슬래브 완료·강도 확인 전 굴착 금지, 단계 굴착 준수, 이상 시 즉시 중지</td>
+          </tr>
+          <tr data-step="단계 굴착" data-type="낙하/추락" data-work="협소/동시작업">
+            <td><span class="tag ylw">낙하/추락</span></td>
+            <td>단계 굴착</td><td>협소/동시작업</td>
+            <td>지하층 작업 공간 협소로 장비·작업자 접촉/추락</td>
+            <td>동선 분리, 작업반경 통제, 유도자 지휘, 안전난간/추락방지</td>
+          </tr>
+
+          <!-- 개구부/램프 -->
+          <tr data-step="개구부/램프" data-type="낙하/추락" data-work="일반">
+            <td><span class="tag red">낙하/추락</span></td>
+            <td>개구부/램프</td><td>일반</td>
+            <td>개구부 개방 상태로 인한 추락·낙하물 위험</td>
+            <td>덮개/난간/표지, 낙하방지망, 개구부 주변 작업 제한·감시자 지정</td>
+          </tr>
+          <tr data-step="개구부/램프" data-type="전도/충돌" data-work="야간/우천">
+            <td><span class="tag ylw">전도/충돌</span></td>
+            <td>개구부/램프</td><td>야간/우천</td>
+            <td>램프 미끄럼·시야불량으로 장비 미끄럼/충돌</td>
+            <td>조명 확보, 미끄럼 방지(포설/정비), 경사로 이용 기준 설정</td>
+          </tr>
+
+          <!-- 양중/반입 -->
+          <tr data-step="양중/반입" data-type="낙하/추락" data-work="일반">
+            <td><span class="tag red">낙하/추락</span></td>
+            <td>양중/반입</td><td>일반</td>
+            <td>지하 개구부로 양중 중 와이어/훅/체결 불량 → 낙하</td>
+            <td>양중계획(중량/장비/경로) 수립, 체결점검, 작업반경 통제, 신호수 단일 지휘</td>
+          </tr>
+          <tr data-step="양중/반입" data-type="끼임/협착" data-work="협소/동시작업">
+            <td><span class="tag ylw">끼임/협착</span></td>
+            <td>양중/반입</td><td>협소/동시작업</td>
+            <td>지하 반입 시 자재·장비 사이 끼임</td>
+            <td>유도자 지휘, 손 끼임 구간 접근 금지, 이동 속도 제한, 정리정돈</td>
+          </tr>
+
+          <!-- 지하 작업환경 -->
+          <tr data-step="지하 작업환경" data-type="질식/유해가스" data-work="지하밀폐">
+            <td><span class="tag red">질식/유해가스</span></td>
+            <td>지하 작업환경</td><td>지하밀폐</td>
+            <td>환기 불량, 산소결핍/유해가스 축적</td>
+            <td>환기팬 가동, 산소/가스 측정 후 투입, 경보 시 즉시 대피·재측정 후 재개</td>
+          </tr>
+          <tr data-step="지하 작업환경" data-type="전도/충돌" data-work="지하밀폐">
+            <td><span class="tag ylw">전도/충돌</span></td>
+            <td>지하 작업환경</td><td>지하밀폐</td>
+            <td>조명 부족·바닥 슬라임/수막으로 미끄럼</td>
+            <td>조명 확보, 배수/청소, 통로 확보, 미끄럼 방지 조치</td>
+          </tr>
+
+          <!-- 계측/유지관리 -->
+          <tr data-step="계측/유지관리" data-type="붕괴/좌굴" data-work="일반">
+            <td><span class="tag red">붕괴/좌굴</span></td>
+            <td>계측/유지관리</td><td>일반</td>
+            <td>벽체 변위·기둥 하중 변화 방치로 연쇄 붕괴</td>
+            <td>기준/경보/조치치 운영, 이상 시 굴착/양중/콘크리트 타설 중지 → 보강/승인 후 재개</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>현장 “한 줄” 운영 규칙</h3>
+      <ul class="list">
+        <li><b>양생 전 굴착/적치는 없다.</b> (하중경로 확보 전 진행 금지)</li>
+        <li><b>개구부는 덮개·난간·망이 기본이다.</b> (하나라도 없으면 작업 금지)</li>
+        <li><b>계측 이상이면 다음 단계는 없다.</b> (정상 확인 전 공정 진행 금지)</li>
+        <li><b>지하는 환기/가스측정 없으면 투입 금지.</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SOP -->
+<section id="sop">
+  <div class="container">
+    <div class="section-title">
+      <h2>SOP</h2>
+      <div class="hint">공정 기반 표준 절차(현장 즉시 적용)</div>
+    </div>
+
+    <div class="callout">
+      <div class="title">✅ SOP 운영 포인트</div>
+      <div class="desc">
+        탑다운은 “<b>구조 확보 → 굴착</b>”이 원칙입니다.
+        <b>슬래브(지보) 완성</b>과 <b>계측 정상</b>이 확인되기 전에는 다음 단계로 넘어가지 않습니다.
+      </div>
+    </div>
+
+    <div style="margin-top:14px" class="steps">
+      <div class="step">
+        <div class="no">1</div>
+        <h4>사전 준비</h4>
+        <ul>
+          <li>단계 공정계획(굴착/슬래브/개구부/양중) 확정</li>
+          <li>계측 설치(변위·하중·수위) 및 기준치 운영</li>
+          <li>지하 환기/가스측정·비상대피 계획 수립</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="no">2</div>
+        <h4>외벽·기둥 선시공</h4>
+        <ul>
+          <li>기둥 수직도/정착/접합부 품질 확인</li>
+          <li>결함 발견 시 보강/재시공 후 진행</li>
+          <li>장비 충돌 방지 통제구역 운영</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="no">3</div>
+        <h4>상부 슬래브(지보) 시공</h4>
+        <ul>
+          <li>동바리/거푸집 안전성 확인</li>
+          <li>개구부 덮개·난간·낙하방지망 설치</li>
+          <li>양생 전 하중 집중(적치/장비) 금지</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="no">4</div>
+        <h4>단계 굴착</h4>
+        <ul>
+          <li>슬래브 강도/완성 확인 후 굴착</li>
+          <li>과굴착/선굴착 금지(하중경로 상실 방지)</li>
+          <li>배수·수위 관리, 침하/균열 징후 시 중지</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="no">5</div>
+        <h4>양중·반입</h4>
+        <ul>
+          <li>양중계획(중량/경로/장비) 수립</li>
+          <li>체결점검, 신호수 1인 지휘, 반경 통제</li>
+          <li>지하 협소부 끼임·충돌 위험 분리 운영</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="no">6</div>
+        <h4>계측·유지관리(반복)</h4>
+        <ul>
+          <li>계측값 확인 후 다음 단계 진행</li>
+          <li>이상 시 굴착/양중/타설 즉시 중지</li>
+          <li>보강/승인 후 재개(기록 필수)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 점검 -->
+<section id="check">
+  <div class="container">
+    <div class="section-title">
+      <h2>일일 점검(저장형)</h2>
+      <div class="hint">진행률 · 저장 · 복사 · 재사용</div>
+    </div>
+
+    <div class="checklist">
+      <div class="toolbar">
+        <div id="progressText">0 / 0</div>
+        <div class="mini-actions">
+          <button class="btn" id="clearChecklist">초기화</button>
+          <button class="btn primary" id="copyChecklist">복사</button>
+        </div>
+      </div>
+
+      <div class="progress"><div class="bar" id="bar"></div></div>
+
+      <div class="group-title">A. 계획·통제(하중경로·개구부·양중계획)</div>
+      <div class="cl-grid" id="clGridA"></div>
+
+      <div class="group-title">B. 구조·슬래브(동바리/거푸집/양생)</div>
+      <div class="cl-grid" id="clGridB"></div>
+
+      <div class="group-title">C. 굴착·개구부(과굴착/추락/낙하)</div>
+      <div class="cl-grid" id="clGridC"></div>
+
+      <div class="group-title">D. 양중·반입(낙하/끼임/충돌)</div>
+      <div class="cl-grid" id="clGridD"></div>
+
+      <div class="group-title">E. 지하환경·계측(환기/가스/이상 시 중지)</div>
+      <div class="cl-grid" id="clGridE"></div>
+
+      <div class="hr"></div>
+
+      <div class="callout danger">
+        <div class="title">🛑 규칙</div>
+        <div class="desc">
+          <b>치명 항목(🟥) 1개라도 미충족이면 작업 중지</b> 후 원인 제거/보강/승인 절차를 거친 뒤 재개합니다.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TBM -->
+<section id="tbm">
+  <div class="container">
+    <div class="section-title">
+      <h2>TBM (10초 자동 생성)</h2>
+      <div class="hint">공정 + 장비 + 조건 “혼합 분기”</div>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <div class="inputs">
+          <input class="input" id="tbmSite" placeholder="현장명 (예: ○○ 탑다운 현장)">
+          <select id="tbmProc">
+            <option value="사전/통제">사전/통제</option>
+            <option value="외벽·기둥 선시공">외벽·기둥 선시공</option>
+            <option value="슬래브/보 시공">슬래브/보 시공</option>
+            <option value="단계 굴착">단계 굴착</option>
+            <option value="개구부/램프">개구부/램프</option>
+            <option value="양중/반입">양중/반입</option>
+            <option value="지하 작업환경">지하 작업환경</option>
+            <option value="계측/점검">계측/점검</option>
+          </select>
+          <select id="tbmEq">
+            <option value="굴착기/로더">굴착기/로더</option>
+            <option value="크레인/호이스트">크레인/호이스트</option>
+            <option value="콘크리트 타설">콘크리트 타설(펌프카)</option>
+            <option value="펌프/배수">펌프/배수</option>
+            <option value="환기/가스측정">환기팬/가스측정기</option>
+            <option value="일반장비">일반장비/공구</option>
+          </select>
+          <select id="tbmPlace">
+            <option value="일반">일반</option>
+            <option value="근접구조물">근접 구조물/도로 인접</option>
+            <option value="협소/동시작업">협소·동시작업</option>
+            <option value="야간/우천">야간/우천</option>
+            <option value="지하밀폐">지하 밀폐공간</option>
+          </select>
+          <select id="tbmCond">
+            <option value="">특이조건 없음</option>
+            <option value="양생전하중금지">양생 전 하중 집중 금지</option>
+            <option value="개구부강화">개구부 방호 강화</option>
+            <option value="계측강화">계측 강화(기준/경보/조치)</option>
+          </select>
+        </div>
+
+        <div class="mini-actions">
+          <button class="btn primary" id="genTBM">생성</button>
+          <button class="btn" id="copyTBM">복사</button>
+        </div>
+      </div>
+
+      <textarea id="tbmOut" rows="11" placeholder="TBM 생성 결과가 여기에 표시됩니다."></textarea>
+
+      <div class="hr"></div>
+      <div class="callout">
+        <div class="title">💡 TBM 한 줄 기준</div>
+        <div class="desc">
+          “<b>양생 전 굴착/적치 금지</b>, <b>개구부 방호</b>, <b>계측 이상 시 중지</b>, <b>지하 환기/가스측정</b>”를 반드시 포함하세요.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+/* ---------------------------
+   Theme
+--------------------------- */
+const root=document.documentElement, THEME="td_theme_v1";
+const themeBtn=document.getElementById("themeBtn");
+if(localStorage.getItem(THEME)==="dark") root.setAttribute("data-theme","dark");
+themeBtn.onclick=()=>{
+  const dark = root.getAttribute("data-theme")==="dark";
+  dark ? root.removeAttribute("data-theme") : root.setAttribute("data-theme","dark");
+  localStorage.setItem(THEME, dark ? "light" : "dark");
+};
+
+/* ---------------------------
+   Risk Filter
+--------------------------- */
+const q=document.getElementById("q");
+const fStep=document.getElementById("fStep");
+const fType=document.getElementById("fType");
+const fWork=document.getElementById("fWork");
+const rows=[...document.querySelectorAll("#riskTable tbody tr")];
+
+function applyRisk(){
+  const kw=(q.value||"").trim();
+  rows.forEach(tr=>{
+    const okQ = !kw || tr.innerText.includes(kw);
+    const okS = !fStep.value || tr.dataset.step===fStep.value;
+    const okT = !fType.value || tr.dataset.type===fType.value;
+    const okW = !fWork.value || tr.dataset.work===fWork.value;
+    tr.style.display = (okQ && okS && okT && okW) ? "" : "none";
+  });
+}
+[q,fStep,fType,fWork].forEach(el=>el.addEventListener("input", applyRisk));
+document.getElementById("resetRisk").onclick=()=>{
+  q.value=""; fStep.value=""; fType.value=""; fWork.value="";
+  applyRisk();
+};
+document.getElementById("copyRiskTop").onclick = async ()=>{
+  const visible = rows.filter(tr=>tr.style.display!=="none");
+  const top = visible.slice(0,6).map(tr=>{
+    const tds=[...tr.querySelectorAll("td")].map(td=>td.innerText.trim());
+    return `- [${tds[1]}/${tds[2]}/${tds[0].replace(/\s+/g,' ')}] ${tds[3]} → ${tds[4]}`;
+  }).join("\n") || "(표시된 항목 없음)";
+  await navigator.clipboard.writeText(top);
+  alert("핵심 위험 6줄 복사 완료");
+};
+applyRisk();
+
+/* ---------------------------
+   Checklist (Saved)
+--------------------------- */
+const CL="td_check_v1";
+const groups = {
+  A: [
+    {t:"(치명) 단계 공정계획(굴착/슬래브/개구부/양중) 확정", d:"변경 시 승인 후 진행"},
+    {t:"(치명) 하중경로 확인(슬래브/기둥/벽체) 및 가설하중 금지구역 지정", d:"집중 적치 금지"},
+    {t:"(치명) 개구부 덮개·난간·낙하방지망 설치 계획/완료", d:"미설치 시 작업 금지"},
+    {t:"양중계획(중량/경로/신호수) 수립 및 동시작업 분리", d:"반경 통제"},
+  ],
+  B: [
+    {t:"(치명) 동바리/거푸집 설치 상태 확인(이탈·침하·변형 없음)", d:"부재 누락 금지"},
+    {t:"(치명) 콘크리트 타설/양생 기준 준수(조기 하중 금지)", d:"강도 확인 전 굴착 금지"},
+    {t:"슬래브/보/기둥 균열·좌굴·접합부 이상 없음", d:"이상 시 즉시 중지"},
+    {t:"가설하중(자재/장비) 적치구역 지정·하중 분산", d:"임의 적치 금지"},
+  ],
+  C: [
+    {t:"(치명) 단계 굴착 준수(과굴착/선굴착 금지)", d:"하중경로 상실 방지"},
+    {t:"(치명) 개구부 주변 추락방지 조치(난간/망/표지)", d:"감시자 지정"},
+    {t:"배수·수위 관리 및 바닥 정리(미끄럼 방지)", d:"통로 확보"},
+    {t:"침하/균열/붕괴 징후 발견 시 즉시 작업 중지", d:"접근 통제"},
+  ],
+  D: [
+    {t:"(치명) 양중 장비/와이어/훅/체결점검 완료", d:"이상 시 작업 금지"},
+    {t:"(치명) 양중 반경 통제 및 신호수 1인 지휘", d:"동선 분리"},
+    {t:"지하 반입 동선 확보(협소부 끼임 방지)", d:"유도자 배치"},
+    {t:"낙하 위험구역 설정 및 출입 통제", d:"표지/바리케이드"},
+  ],
+  E: [
+    {t:"(치명) 환기팬 가동·산소/유해가스 측정 후 투입", d:"경보 시 즉시 대피"},
+    {t:"지하 조명 확보 및 비상대피 동선 확보", d:"통로 장애물 제거"},
+    {t:"(치명) 계측값(변위/하중/수위) 확인 및 기준치 관리", d:"이상 시 공정 정지"},
+    {t:"계측 이상/구조 이상 시 보강·승인 후 재개(기록)", d:"임의 재개 금지"},
+  ]
+};
+
+const groupIndex = { A:0, B:100, C:200, D:300, E:400 };
+
+function loadChecklist(){ return JSON.parse(localStorage.getItem(CL) || "[]"); }
+function saveChecklist(arr){ localStorage.setItem(CL, JSON.stringify(arr)); }
+
+function allKeys(){
+  return [
+    ...groups.A.map((_,i)=>groupIndex.A+i),
+    ...groups.B.map((_,i)=>groupIndex.B+i),
+    ...groups.C.map((_,i)=>groupIndex.C+i),
+    ...groups.D.map((_,i)=>groupIndex.D+i),
+    ...groups.E.map((_,i)=>groupIndex.E+i),
+  ];
+}
+
+function renderGroup(gridId, baseIndex, items){
+  const grid=document.getElementById(gridId);
+  grid.innerHTML="";
+  const saved=loadChecklist();
+  items.forEach((it,idx)=>{
+    const key=baseIndex+idx;
+    const checked=saved.includes(key);
+    const el=document.createElement("label");
+    el.className="cl-item";
+    const isCritical = (it.t||"").includes("(치명)");
+    el.innerHTML = `
+      <input type="checkbox" data-k="${key}" ${checked?"checked":""}/>
+      <div>
+        <b>${isCritical ? "🟥 " : "✅ "}${it.t.replace("(치명)","").trim()}</b>
+        <span>${it.d||""}</span>
+      </div>`;
+    grid.appendChild(el);
+  });
+
+  grid.querySelectorAll("input").forEach(inp=>{
+    inp.onchange=()=>{
+      let saved=loadChecklist();
+      const k=+inp.dataset.k;
+      if(inp.checked){ if(!saved.includes(k)) saved.push(k); }
+      else saved=saved.filter(x=>x!==k);
+      saveChecklist(saved);
+      updateProgress();
+    };
+  });
+}
+
+function updateProgress(){
+  const saved=loadChecklist();
+  const keys=allKeys();
+  const done=keys.filter(k=>saved.includes(k)).length;
+  const total=keys.length;
+  const pct=Math.round(done/total*100);
+  document.getElementById("bar").style.width = pct+"%";
+  document.getElementById("progressText").textContent = `${done} / ${total} (${pct}%)`;
+}
+
+function initChecklist(){
+  renderGroup("clGridA", groupIndex.A, groups.A);
+  renderGroup("clGridB", groupIndex.B, groups.B);
+  renderGroup("clGridC", groupIndex.C, groups.C);
+  renderGroup("clGridD", groupIndex.D, groups.D);
+  renderGroup("clGridE", groupIndex.E, groups.E);
+  updateProgress();
+}
+
+document.getElementById("clearChecklist").onclick=()=>{
+  localStorage.removeItem(CL);
+  initChecklist();
+};
+
+document.getElementById("copyChecklist").onclick=async()=>{
+  const saved=loadChecklist();
+  const lines=[];
+  const push=(title, base, arr)=>{
+    const checked = arr
+      .map((it,i)=>({it, key:base+i}))
+      .filter(x=>saved.includes(x.key))
+      .map(x=>{
+        const isCritical = (x.it.t||"").includes("(치명)");
+        return `${isCritical?"[🟥]":"[✓]"} ${x.it.t.replace("(치명)","").trim()}`;
+      });
+    lines.push(`■ ${title}`);
+    lines.push(checked.length?checked.join("\n"):"(체크 없음)");
+    lines.push("");
+  };
+  push("A. 계획·통제", groupIndex.A, groups.A);
+  push("B. 구조·슬래브", groupIndex.B, groups.B);
+  push("C. 굴착·개구부", groupIndex.C, groups.C);
+  push("D. 양중·반입", groupIndex.D, groups.D);
+  push("E. 지하환경·계측", groupIndex.E, groups.E);
+
+  await navigator.clipboard.writeText(lines.join("\n").trim());
+  alert("점검 결과 복사 완료");
+};
+initChecklist();
+
+/* ---------------------------
+   TBM Generator (Branching)
+--------------------------- */
+const tbmSite=document.getElementById("tbmSite");
+const tbmProc=document.getElementById("tbmProc");
+const tbmEq=document.getElementById("tbmEq");
+const tbmPlace=document.getElementById("tbmPlace");
+const tbmCond=document.getElementById("tbmCond");
+const tbmOut=document.getElementById("tbmOut");
+
+function controlsByProc(proc){
+  const map = {
+    "사전/통제": [
+      "단계 공정계획 및 하중경로(슬래브-기둥-벽체) 확인",
+      "개구부 방호(덮개·난간·망) 완료 여부 확인",
+      "계측 기준/경보/조치치 및 이상 시 중지 체계 공유"
+    ],
+    "외벽·기둥 선시공": [
+      "기둥 수직도·정착·접합부 품질 확인",
+      "장비 회전반경 통제 및 신호수 배치",
+      "균열·변형 발견 시 즉시 중지 후 조치"
+    ],
+    "슬래브/보 시공": [
+      "동바리/거푸집 설치 상태 확인(부재 누락 금지)",
+      "양생 전 하중 집중 금지(적치구역 지정)",
+      "개구부 방호(난간/덮개/망) 재확인"
+    ],
+    "단계 굴착": [
+      "슬래브 완성·강도 확인 전 굴착 금지",
+      "과굴착/선굴착 금지(단계 굴착 준수)",
+      "침하·균열·붕괴 징후 시 즉시 중지"
+    ],
+    "개구부/램프": [
+      "개구부 덮개·난간·표지·낙하방지망 설치",
+      "램프 조명·미끄럼 방지 및 장비 속도 제한",
+      "낙하 위험구역 출입 통제"
+    ],
+    "양중/반입": [
+      "양중계획(중량/경로) 준수 및 체결점검",
+      "반경 통제, 신호수 1인 지휘(신호 단일화)",
+      "지하 협소부 유도자 배치, 끼임구간 접근 금지"
+    ],
+    "지하 작업환경": [
+      "환기팬 가동 및 산소/유해가스 측정 후 투입",
+      "조명·비상대피 동선 확보, 바닥 미끄럼 제거",
+      "경보·두통·어지러움 시 즉시 대피"
+    ],
+    "계측/점검": [
+      "변위·하중·수위 계측값 확인(기준/경보/조치치)",
+      "이상 시 굴착/양중/타설 즉시 중지",
+      "보강·승인·기록 후 재개(임의 재개 금지)"
+    ]
+  };
+  return map[proc] || ["작업조건 확인", "통제구역 운영", "이상 시 중지"];
+}
+
+function controlsByEq(eq){
+  const map = {
+    "굴착기/로더": [
+      "회전반경 통제 및 유도자 배치",
+      "지하 협소부 속도 제한·후진 유도",
+      "장비 점검(브레이크/유압/누유) 및 충돌 방지"
+    ],
+    "크레인/호이스트": [
+      "중량 확인 및 와이어/훅/샤클 체결점검",
+      "낙하 위험구역 통제, 신호수 1인 지휘",
+      "과하중·비틀림 발생 시 즉시 중지"
+    ],
+    "콘크리트 타설": [
+      "동바리/거푸집 상태 확인 후 타설",
+      "타설 중 편하중 방지·진동기 안전 사용",
+      "양생 전 하중 집중 금지(적치/장비 주행)"
+    ],
+    "펌프/배수": [
+      "배수 계획 및 수위 상승 시 중지 기준 확인",
+      "호스 체결·누수 점검, 통로 수막 제거",
+      "감전 위험 방지(전원/케이블 정리)"
+    ],
+    "환기/가스측정": [
+      "환기팬 가동·측정기 정상 여부 확인",
+      "경보 시 즉시 대피 및 재측정",
+      "출입자 통제·감시자 배치"
+    ],
+    "일반장비": [
+      "정리정돈(넘어짐/낙하 방지)",
+      "PPE 착용(안전모·안전화·조끼 기본)",
+      "이상 시 즉시 중지·보고"
+    ]
+  };
+  return map[eq] || ["장비점검", "통제구역", "이상 시 중지"];
+}
+
+function addByPlace(place){
+  if(place==="근접구조물") return [
+    "근접 구조물/도로 영향권 통제 및 계측 강화",
+    "침하·균열 징후 시 즉시 중지·보고",
+    "진동/토사 유실 최소화(조건 조정)"
+  ];
+  if(place==="협소/동시작업") return [
+    "동시작업 분리(동선/시간/구역)",
+    "유도자 1인 지휘(신호 단일화)",
+    "끼임·충돌 위험구간 접근 금지"
+  ];
+  if(place==="야간/우천") return [
+    "조명·시야 확보, 미끄럼/전도 위험 확인",
+    "우천 시 램프/통로 미끄럼 방지 및 속도 제한",
+    "배수·정리 강화(수막/슬라임 제거)"
+  ];
+  if(place==="지하밀폐") return [
+    "환기팬 가동 및 산소/유해가스 측정 후 투입",
+    "경보·증상(두통/어지러움) 시 즉시 대피",
+    "비상대피 동선·감시자 운영"
+  ];
+  return ["통제구역 운영", "PPE 착용 확인", "이상 발생 시 즉시 중지"];
+}
+
+function addByCond(cond){
+  if(cond==="양생전하중금지") return "양생 전 하중 집중 금지 → 적치구역 준수, 장비 주행/자재 적치 금지.";
+  if(cond==="개구부강화") return "개구부 방호 강화 → 덮개·난간·표지·낙하방지망 미설치 시 작업 금지.";
+  if(cond==="계측강화") return "계측 강화 → 기준/경보/조치치 준수, 이상 시 공정 정지 후 보강·승인.";
+  return "";
+}
+
+function toLine(arr){ return arr.map((v,i)=>`${i+1}) ${v}`).join(" "); }
+
+document.getElementById("genTBM").onclick=()=>{
+  const site=(tbmSite.value||"본 현장").trim();
+  const proc=tbmProc.value;
+  const eq=tbmEq.value;
+  const place=tbmPlace.value;
+  const cond=tbmCond.value;
+
+  const P = controlsByProc(proc);
+  const E = controlsByEq(eq);
+  const L = addByPlace(place);
+  const extra = addByCond(cond);
+
+  tbmOut.value =
+`지금부터 작업 전 TBM 실시합니다.
+현장: ${site}
+작업: 탑다운 ${proc} / 장비: ${eq} / 상황: ${place}${cond?` / 특이: ${cond}`:""}
+
+오늘 핵심 위험은 붕괴·좌굴, 개구부 추락·낙하, 양중 낙하, 지하 산소결핍/유해가스입니다.
+[공정 통제] ${toLine(P)}
+[장비 통제] ${toLine(E)}
+[현장 조건 통제] ${toLine(L)}
+${extra?`[추가 주의] ${extra}`:""}
+
+구조 균열·좌굴·변형, 계측 이상(급변/기준 초과), 굴착면 붕괴 징후,
+개구부 방호 불량, 가스 경보, 양중 체결 이상이 발생하면 즉시 작업을 중지하고 접근통제 후 원인 제거·승인 절차를 거쳐 재개하겠습니다.`;
+};
+
+document.getElementById("copyTBM").onclick=async()=>{
+  await navigator.clipboard.writeText(tbmOut.value || "");
+  alert("TBM 복사 완료");
+};
+</script>
+</body>
+</html>
