@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>동진 안전보건작업지침 포털</title>
+
+<meta name="description" content="동진토건 안전보건작업지침 통합 포털. TBM·SOP·점검 기반 현장 실무형 안전지침 제공">
+<meta name="theme-color" content="#004a99">
+
+<link rel="stylesheet" as="style" crossorigin
+href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"/>
+
+<style>
+:root{
+  --blue:#004a99;
+  --blue2:#2f7de1;
+  --bg:#f4f8ff;
+  --card:#ffffff;
+  --line:#dbe7f5;
+  --ink:#0f172a;
+  --muted:#5b6b80;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Pretendard,system-ui,sans-serif;
+  background:linear-gradient(180deg,#eef4ff,#f8fbff);
+  color:var(--ink);
+}
+.container{
+  width:min(1200px,calc(100% - 40px));
+  margin:0 auto;
+}
+
+/* ===== Header ===== */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 0;
+}
+.brand{
+  display:flex;
+  flex-direction:column;
+}
+.brand strong{
+  font-size:20px;
+  font-weight:900;
+}
+.brand span{
+  font-size:13px;
+  font-weight:800;
+  color:var(--muted);
+}
+
+/* 홈 버튼 */
+.home-btn{
+  padding:10px 16px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#fff;
+  font-weight:900;
+  font-size:13px;
+  text-decoration:none;
+  box-shadow:0 8px 24px rgba(0,74,153,.25);
+}
+.home-btn:hover{opacity:.9}
+
+/* ===== Hero ===== */
+.hero{
+  padding:40px 0 30px;
+}
+.hero-box{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:30px;
+  box-shadow:0 20px 50px rgba(0,74,153,.1);
+}
+.hero-badge{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#e6f0ff;
+  font-weight:900;
+  font-size:13px;
+}
+.hero h1{
+  margin:16px 0 10px;
+  font-size:36px;
+  letter-spacing:-.02em;
+}
+.hero p{
+  margin:0;
+  color:var(--muted);
+  font-weight:800;
+  line-height:1.6;
+}
+
+/* ===== Sections ===== */
+section{padding:36px 0}
+section h2{
+  font-size:24px;
+  margin-bottom:14px;
+}
+
+/* ===== Cards ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+@media(max-width:960px){
+  .grid{grid-template-columns:1fr}
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 16px 40px rgba(0,74,153,.08);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.card h3{
+  margin:0 0 8px;
+  font-size:18px;
+}
+.card p{
+  margin:0 0 14px;
+  color:var(--muted);
+  font-weight:800;
+}
+.tags{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.tag{
+  padding:6px 10px;
+  border-radius:999px;
+  background:#eef4ff;
+  font-size:12px;
+  font-weight:900;
+}
+.card a{
+  text-align:center;
+  padding:12px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#fff;
+  font-weight:900;
+  text-decoration:none;
+}
+.card a:hover{opacity:.9}
+
+/* ===== Footer ===== */
+footer{
+  padding:40px 0 50px;
+  text-align:center;
+  font-size:13px;
+  color:#7b8aa3;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+  <div class="container header-inner">
+    <div class="brand">
+      <strong>동진 안전보건작업지침</strong>
+      <span>DJ Safety · CIP Master Standard</span>
+    </div>
+    <a href="https://es1063122-creator.github.io/dj-safty-portal/" 
+       class="home-btn" target="_blank">
+      🏠 안전포털 홈
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-box">
+      <span class="hero-badge">현장 실무형 안전지침</span>
+      <h1>작업계획부터 TBM까지<br>한 번에 보는 안전보건작업지침</h1>
+      <p>
+        동진토건 현장을 기준으로 구성된 공종별 안전보건작업지침입니다.<br>
+        위험요인 · SOP · 점검 · TBM을 현장에서 바로 활용하세요.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 1 -->
+<section>
+  <div class="container">
+    <h2>흙막이 · 지하 구조 공종</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>탑다운 공법</h3>
+        <div class="tags"><span class="tag">붕괴</span><span class="tag">하중경로</span></div>
+        <p>구조 미완성 상태에서 단계 굴착·슬래브 반복 시공.</p>
+        <a href="탑다운.html">지침 열기</a>
+      </div>
+
+      <div class="card">
+        <h3>흙막이 (CIP)</h3>
+        <div class="tags"><span class="tag">계측</span><span class="tag">붕괴</span></div>
+        <p>천공·철근·콘크리트 연속 시공 관리.</p>
+        <a href="cip.html">지침 열기</a>
+      </div>
+
+      <div class="card">
+        <h3>흙막이 (어스앙카)</h3>
+        <div class="tags"><span class="tag">인장력</span><span class="tag">정착</span></div>
+        <p>천공·그라우팅·긴장력 관리 중심.</p>
+        <a href="어스앙카.html">지침 열기</a>
+      </div>
+
+      <div class="card">
+        <h3>흙막이 (지하연속벽)</h3>
+        <div class="tags"><span class="tag">슬러리</span><span class="tag">붕괴</span></div>
+        <p>슬러리 안정·패널 시공 품질 관리.</p>
+        <a href="벽지하연속벽.html">지침 열기</a>
+      </div>
+
+      <div class="card">
+        <h3>흙막이 (띠장 긴장공법)</h3>
+        <div class="tags"><span class="tag">프리스트레스</span><span class="tag">좌굴</span></div>
+        <p>띠장·스트럿 긴장력 관리.</p>
+        <a href="흙막이 띠장긴장공법.html">지침 열기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2 -->
+<section>
+  <div class="container">
+    <h2>토목 · 도로 공종</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>관로공사</h3>
+        <div class="tags"><span class="tag">매설</span><span class="tag">붕괴</span></div>
+        <p>굴착·관 매설·되메우기 작업 안전.</p>
+        <a href="pipeline-safety.html">지침 열기</a>
+      </div>
+
+      <div class="card">
+        <h3>굴착공사</h3>
+        <div class="tags"><span class="tag">매몰</span><span class="tag">충돌</span></div>
+        <p>토사 붕괴·장비 충돌 예방.</p>
+        <a href="굴착공사.html">지침 열기</a>
+      </div>
+
+      <div class="card">
+        <h3>아스팔트 포장</h3>
+        <div class="tags"><span class="tag">화상</span><span class="tag">교통통제</span></div>
+        <p>고온 자재·도로 작업 안전.</p>
+        <a href="아스팔트포장.html">지침 열기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3 -->
+<section>
+  <div class="container">
+    <h2>장비 · 특수작업</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>용접·용단</h3>
+        <div class="tags"><span class="tag">화재</span><span class="tag">폭발</span></div>
+        <p>불꽃·가스·밀폐공간 관리.</p>
+        <a href="용접용단.html">지침 열기</a>
+      </div>
+
+      <div class="card">
+        <h3>굴착기 작업</h3>
+        <div class="tags"><span class="tag">사각지대</span><span class="tag">전도</span></div>
+        <p>장비 충돌·후진 사고 예방.</p>
+        <a href="굴착기.html">지침 열기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  동진토건(주) · 안전보건작업지침 포털<br>
+  현장 TBM · SOP · 점검 전용 내부 시스템[kdh]
+</footer>
+
+</body>
+</html>
